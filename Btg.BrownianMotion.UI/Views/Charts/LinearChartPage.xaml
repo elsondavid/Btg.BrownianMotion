@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Btg.BrownianMotion.UI.Views.LinearChartPage"
+             x:DataType="charts:LinearChartPageViewModel"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:charts="clr-namespace:Btg.BrownianMotion.UI.Views.Charts"
+             xmlns:controls="clr-namespace:Btg.BrownianMotion.UI.Controls"
+             Title="LinearChartPage">
+
+    <Grid ColumnDefinitions="*,200">
+        <controls:LinearChart Grid.Column="0"
+                              BackStrokeColor="White"
+                              StrokeColor="CornflowerBlue"
+                              StrokeSize="2"
+                              Values="{Binding Values.Value}" />
+
+        <VerticalStackLayout Grid.Column="1">
+            <Label Text="Preço inicial" />
+            <Entry Text="{Binding InitialPrice.Value}" />
+
+            <Label Text="Volatilidade Média(%)" />
+            <Entry Text="{Binding Sigma.Value}" />
+
+            <Label Text="Retorno médio(%)" />
+            <Entry Text="{Binding Mean.Value}" />
+
+            <Label Text="Tempo(dias)" />
+            <Entry Text="{Binding NumberOfDays.Value}" />
+
+            <Button Text="Gerar simulação" 
+                    Command="{Binding GenerateSimulationCommand}"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
